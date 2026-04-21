@@ -1,7 +1,21 @@
 import React, { useState } from 'react';
-import { Calendar, User, Monitor, Users, ChevronRight, GraduationCap, Brain, Laptop, BookOpen, Award, CheckCircle, MapPin, Clock } from 'lucide-react';
+import { 
+  Calendar, 
+  User, 
+  Monitor, 
+  Users, 
+  ChevronRight, 
+  GraduationCap, 
+  Brain, 
+  Laptop, 
+  BookOpen, 
+  Award, 
+  CheckCircle, 
+  MapPin, 
+  Clock 
+} from 'lucide-react';
 
-const App = () => {
+export default function App() {
   const [activeTab, setActiveTab] = useState('all');
 
   const seminars = [
@@ -133,7 +147,6 @@ const App = () => {
             <span className="font-bold text-slate-800 tracking-tight">세명대학교 CTL</span>
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
-            <a href="#about" className="hover:text-[#003f87] transition-colors">소개</a>
             <a href="#schedule" className="hover:text-[#003f87] transition-colors">연간일정</a>
             <a href="#info" className="hover:text-[#003f87] transition-colors">참여안내</a>
           </div>
@@ -142,23 +155,18 @@ const App = () => {
 
       {/* Hero Section */}
       <header className="relative bg-[#003f87] text-white pt-20 pb-32 overflow-hidden">
-        {/* Background Patterns */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-blue-400 blur-3xl"></div>
           <div className="absolute bottom-[-20%] left-[-5%] w-[400px] h-[400px] rounded-full bg-blue-300 blur-3xl"></div>
         </div>
         
         <div className="container mx-auto px-6 relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-100 text-sm font-semibold mb-6 animate-fade-in">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-300"></span>
-            </span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-100 text-sm font-semibold mb-6">
             2026학년도 교수역량 강화 프로그램
           </div>
           <h1 className="text-4xl md:text-6xl font-extrabold leading-[1.1] mb-8 tracking-tight">
             세명교육력증진세미나 <br className="hidden md:block"/>
-            <span className="text-blue-300 italic opacity-90 font-light">Semyung Educational Enhancement Seminar</span>
+            <span className="text-blue-300 italic opacity-90 font-light">Semyung Educational Excellence Seminar</span>
           </h1>
           <p className="text-lg md:text-xl text-blue-100/80 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
             급변하는 교육 환경에 대응하고 생성형 AI를 활용한 미래형 수업 설계를 지원합니다. <br/>
@@ -183,19 +191,27 @@ const App = () => {
       {/* Quick Summary Cards */}
       <section className="container mx-auto px-6 -mt-16 relative z-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            { icon: Brain, color: 'bg-blue-50 text-blue-600', title: 'AI 역량 강화 특화', desc: '연간 총 7회의 AI 집중 세션으로 실전 교수법 마스터' },
-            { icon: Award, color: 'bg-indigo-50 text-indigo-600', title: '교원업적평가 반영', desc: '이수 시 교수역량 강화 실적(교육역량강화) 인정' },
-            { icon: BookOpen, color: 'bg-emerald-50 text-emerald-600', title: '사후 학습 지원', desc: '세미나 영상 및 PDF 자료를 전용 자료실에서 상시 제공' }
-          ].map((item, idx) => (
-            <div key={idx} className="bg-white p-8 rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col items-center text-center transition-transform hover:-translate-y-1">
-              <div className={`p-4 rounded-2xl mb-5 ${item.color}`}>
-                <item.icon className="w-7 h-7" />
-              </div>
-              <h3 className="font-bold text-xl mb-2 text-slate-800">{item.title}</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+          <div className="bg-white p-8 rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col items-center text-center transition-transform hover:-translate-y-1">
+            <div className="p-4 rounded-2xl mb-5 bg-blue-50 text-blue-600">
+              <Brain className="w-7 h-7" />
             </div>
-          ))}
+            <h3 className="font-bold text-xl mb-2 text-slate-800">AI 역량 강화 특화</h3>
+            <p className="text-slate-500 text-sm leading-relaxed">연간 총 7회의 AI 집중 세션으로 실전 교수법 마스터</p>
+          </div>
+          <div className="bg-white p-8 rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col items-center text-center transition-transform hover:-translate-y-1">
+            <div className="p-4 rounded-2xl mb-5 bg-indigo-50 text-indigo-600">
+              <Award className="w-7 h-7" />
+            </div>
+            <h3 className="font-bold text-xl mb-2 text-slate-800">교원업적평가 반영</h3>
+            <p className="text-slate-500 text-sm leading-relaxed">이수 시 교수역량 강화 실적(교육역량강화) 인정</p>
+          </div>
+          <div className="bg-white p-8 rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col items-center text-center transition-transform hover:-translate-y-1">
+            <div className="p-4 rounded-2xl mb-5 bg-emerald-50 text-emerald-600">
+              <BookOpen className="w-7 h-7" />
+            </div>
+            <h3 className="font-bold text-xl mb-2 text-slate-800">사후 학습 지원</h3>
+            <p className="text-slate-500 text-sm leading-relaxed">세미나 영상 및 PDF 자료를 전용 자료실에서 상시 제공</p>
+          </div>
         </div>
       </section>
 
@@ -230,16 +246,14 @@ const App = () => {
               className="group bg-white rounded-[2rem] border border-slate-100 p-2 shadow-sm hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 overflow-hidden"
             >
               <div className="p-6 flex flex-col sm:flex-row gap-6">
-                {/* Date Side */}
                 <div className={`sm:w-32 flex-shrink-0 flex flex-col items-center justify-center py-6 rounded-2xl transition-colors ${seminar.isAI ? 'bg-blue-50 group-hover:bg-blue-600 group-hover:text-white' : 'bg-slate-50 group-hover:bg-slate-800 group-hover:text-white'}`}>
-                  <span className={`text-[10px] font-bold uppercase tracking-[0.2em] mb-1 opacity-60`}>{seminar.round}</span>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] mb-1 opacity-60">{seminar.round}</span>
                   <span className="text-xl font-black mb-2">{seminar.date}</span>
                   <div className={`px-3 py-1 rounded-full text-[10px] font-bold border ${seminar.isAI ? 'border-blue-200 text-blue-600 group-hover:border-blue-400 group-hover:text-white' : 'border-slate-200 text-slate-600 group-hover:border-slate-600 group-hover:text-white'}`}>
                     {seminar.method}
                   </div>
                 </div>
 
-                {/* Content Side */}
                 <div className="flex-grow flex flex-col justify-between py-1">
                   <div>
                     <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -267,9 +281,9 @@ const App = () => {
                     <button className="text-xs font-bold text-[#003f87] flex items-center gap-1 hover:underline">
                       세부 내용 보기 <ChevronRight className="w-3 h-3" />
                     </button>
-                    <div className="flex gap-2">
-                       <Clock className="w-4 h-4 text-slate-300" title="90분 진행" />
-                       <Monitor className="w-4 h-4 text-slate-300" title="실시간 지원" />
+                    <div className="flex gap-2 text-slate-300">
+                       <Clock className="w-4 h-4" />
+                       <Monitor className="w-4 h-4" />
                     </div>
                   </div>
                 </div>
@@ -323,19 +337,27 @@ const App = () => {
                 <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600/20 blur-3xl"></div>
                 <h3 className="text-2xl font-bold mb-8">간편 신청 프로세스</h3>
                 <div className="space-y-8 relative z-10">
-                  {[
-                    { step: '01', title: '로그인', desc: '차세대통합시스템(Teaching Supporter) 접속' },
-                    { step: '02', title: '메뉴 이동', desc: '학사행정 > 교수학습 > 세미나 신청' },
-                    { step: '03', title: '신청 완료', desc: '원하는 회차 선택 후 하단 [신청] 버튼 클릭' }
-                  ].map((item, idx) => (
-                    <div key={idx} className="flex gap-6">
-                      <span className="text-3xl font-black text-blue-500/40 italic">{item.step}</span>
-                      <div>
-                        <h5 className="font-bold mb-1 text-blue-400">{item.title}</h5>
-                        <p className="text-slate-400 text-sm">{item.desc}</p>
-                      </div>
+                  <div className="flex gap-6">
+                    <span className="text-3xl font-black text-blue-500/40 italic">01</span>
+                    <div>
+                      <h5 className="font-bold mb-1 text-blue-400">로그인</h5>
+                      <p className="text-slate-400 text-sm">차세대통합시스템(Teaching Supporter) 접속</p>
                     </div>
-                  ))}
+                  </div>
+                  <div className="flex gap-6">
+                    <span className="text-3xl font-black text-blue-500/40 italic">02</span>
+                    <div>
+                      <h5 className="font-bold mb-1 text-blue-400">메뉴 이동</h5>
+                      <p className="text-slate-400 text-sm">학사행정 &gt; 교수학습 &gt; 세미나 신청</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-6">
+                    <span className="text-3xl font-black text-blue-500/40 italic">03</span>
+                    <div>
+                      <h5 className="font-bold mb-1 text-blue-400">신청 완료</h5>
+                      <p className="text-slate-400 text-sm">원하는 회차 선택 후 하단 [신청] 버튼 클릭</p>
+                    </div>
+                  </div>
                 </div>
                 <button className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-2xl mt-12 transition-all shadow-lg shadow-blue-600/20">
                   신청 시스템 바로가기
@@ -365,26 +387,24 @@ const App = () => {
             </div>
           </div>
           
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-12">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-12 text-slate-500 text-sm">
             <div>
-              <h5 className="font-bold text-slate-800 mb-4">센터 안내</h5>
-              <ul className="text-slate-500 text-sm space-y-2">
+              <h5 className="font-bold text-slate-800 mb-4 text-base">센터 안내</h5>
+              <ul className="space-y-2">
                 <li><a href="#" className="hover:text-[#003f87]">센터 소개</a></li>
                 <li><a href="#" className="hover:text-[#003f87]">조직 및 구성</a></li>
-                <li><a href="#" className="hover:text-[#003f87]">찾아오시는 길</a></li>
               </ul>
             </div>
             <div>
-              <h5 className="font-bold text-slate-800 mb-4">주요 서비스</h5>
-              <ul className="text-slate-500 text-sm space-y-2">
+              <h5 className="font-bold text-slate-800 mb-4 text-base">주요 서비스</h5>
+              <ul className="space-y-2">
                 <li><a href="#" className="hover:text-[#003f87]">SEES 세미나</a></li>
-                <li><a href="#" className="hover:text-[#003f87]">교수법 컨설팅</a></li>
                 <li><a href="#" className="hover:text-[#003f87]">학습 지원</a></li>
               </ul>
             </div>
             <div className="col-span-2 sm:col-span-1">
-              <h5 className="font-bold text-slate-800 mb-4">문의처</h5>
-              <p className="text-slate-500 text-sm leading-relaxed">
+              <h5 className="font-bold text-slate-800 mb-4 text-base">문의처</h5>
+              <p className="leading-relaxed">
                 충북 제천시 세명로 65 <br/> 학술관 1층 102호 <br/>
                 043-649-1111
               </p>
@@ -394,6 +414,4 @@ const App = () => {
       </footer>
     </div>
   );
-};
-
-export default App;
+}
