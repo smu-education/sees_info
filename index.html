@@ -11,6 +11,8 @@
         body { font-family: 'Pretendard', sans-serif; background-color: #f8fafc; }
         .gradient-bg { background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); }
         .card-hover:hover { transform: translateY(-4px); transition: all 0.3s ease; }
+        /* 강조 테두리 효과 복구 */
+        .current-session-ring { box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15); }
     </style>
 </head>
 <body class="p-4 md:p-8">
@@ -18,8 +20,8 @@
     <div class="max-w-6xl mx-auto">
         <!-- Header -->
         <header class="gradient-bg text-white p-8 rounded-3xl shadow-xl mb-12 text-center">
-            <h1 class="text-3xl md:text-4xl font-bold mb-4">2026 세명교육력증진세미나(SEES)</h1>
-            <p class="text-blue-100 opacity-90">Semyung Education Enhancemet Seminar</p>
+            <h1 class="text-3xl md:text-4xl font-bold mb-2">2026 세명교육력증진세미나(SEES)</h1>
+            <p class="text-blue-100 opacity-90 font-medium tracking-wide">Semyung Education Enhancement Seminar</p>
         </header>
 
         <!-- Filter/Stats -->
@@ -28,7 +30,6 @@
                 <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full border border-blue-200">전체 10회차</span>
                 <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full border border-green-200">AI 역량 강화</span>
                 <span class="bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full border border-blue-700 animate-pulse">2회 진행 예정</span>
-            </div>                
             </div>
             <div class="text-gray-500 text-sm italic">* 센터 상황에 따라 주제 및 일정이 변경될 수 있습니다.</div>
         </div>
@@ -56,8 +57,6 @@
                 topic: "[AI 역량 강화] AI 시대의 교육과 윤리",
                 speaker: "신지은 교수", institution: "세종대학교",
                 type: "온라인", typeClass: "bg-purple-100 text-purple-700",
-                // 수정 포인트 2: 강조하고 싶은 회차에 아래 한 줄(isCurrent: true)을 추가하세요. 
-                // 다른 회차에 있던 이 줄은 삭제하거나 false로 바꿔주시면 됩니다.
                 isCurrent: true 
             },
             {
@@ -130,20 +129,30 @@
 
         programs.forEach(program => {
             const isAI = program.topic.includes('[AI 역량 강화]');
+            const isCurrent = program.isCurrent === true;
+            
             const card = `
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 card-hover flex flex-col justify-between relative overflow-hidden">
+                <div class="bg-white rounded-2xl shadow-sm p-6 card-hover flex flex-col justify-between relative overflow-hidden 
+                    ${isCurrent ? 'border-2 border-blue-500 current-session-ring shadow-lg' : 'border border-gray-100'}">
+                    
+                    <!-- Status Labels -->
+                    <div class="absolute top-0 left-0 flex">
+                        ${isCurrent ? '<div class="bg-blue-600 text-white text-[10px] px-3 py-1 rounded-br-lg font-bold z-10">진행 예정</div>' : ''}
+                    </div>
+                    
                     ${isAI ? '<div class="absolute top-0 right-0 bg-blue-500 text-white text-[10px] px-3 py-1 rounded-bl-lg font-bold">AI FOCUS</div>' : ''}
+                    
                     <div>
                         <div class="flex justify-between items-start mb-4">
-                            <span class="text-blue-600 font-bold text-lg">${program.id}</span>
+                            <span class="${isCurrent ? 'text-blue-700' : 'text-blue-600'} font-bold text-lg">${program.id}</span>
                             <span class="px-2 py-1 rounded text-xs font-bold ${program.typeClass}">${program.type}</span>
                         </div>
                         
-                        <div class="flex items-center text-gray-500 text-sm mb-2 font-semibold">
+                        <div class="flex items-center text-gray-500 text-sm mb-2 font-semibold ${isCurrent ? 'text-blue-600' : ''}">
                             <i class="far fa-calendar-alt mr-2"></i> ${program.date}
                         </div>
 
-                        <h3 class="text-gray-900 font-bold text-lg mb-3 leading-tight">
+                        <h3 class="text-gray-900 font-bold text-lg mb-3 leading-tight ${isCurrent ? 'text-blue-900' : ''}">
                             ${program.topic}
                         </h3>
 
@@ -155,8 +164,8 @@
 
                     <div class="mt-4 pt-4 border-t border-gray-50">
                         <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center mr-3">
-                                <i class="fas fa-user-tie text-gray-400"></i>
+                            <div class="w-10 h-10 rounded-full ${isCurrent ? 'bg-blue-50' : 'bg-gray-100'} flex items-center justify-center mr-3">
+                                <i class="fas fa-user-tie ${isCurrent ? 'text-blue-400' : 'text-gray-400'}"></i>
                             </div>
                             <div>
                                 <p class="text-sm font-bold text-gray-800">${program.speaker}</p>
